@@ -18,3 +18,23 @@
 - Tree shaking algorithm 100's of functions and parcel will remove unused code
 - Different dev and production builds
 - npx parcel build <filename> for production build
+
+# Namaste Food
+
+<!-- /*
+Header
+ -Logo
+ - Nav Items
+Body
+ - Search
+ -RestaurantContainer
+   -RestaurantCard
+      -image
+      - name
+      -star rating , cuisine , Deliverytime
+Footer
+ -Copyright
+ -Links
+ -Address
+ -Contact
+*/ -->
