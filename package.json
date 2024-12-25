@@ -27,7 +27,8 @@
   "dependencies": {
     "@parcel/transformer-react-refresh-wrap": "^2.13.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1"
   },
   "browserslist": [
     "last 10 versions"
