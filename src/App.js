@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
@@ -7,6 +7,7 @@ import Contact from "./Components/Contact";
 import Error from "./Components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import RestaurantMenu from "./Components/RestaurantMenu";
+import UserContext from "./utils/UserContext";
 
 /*
 Header
@@ -24,11 +25,22 @@ Footer
 */
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    // usually we make api call here
+    const data = {
+      name: "Prudhvi",
+    };
+    setUserName(data.name);
+  }, []);
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
@@ -36,26 +48,13 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    errorElement: <Error />,
+    errorElement: <Error />, // Keep only this
     children: [
-      {
-        path: "/", // Default route
-        element: <Body />, // Render Body for the homepage
-      },
-      {
-        path: "about",
-        element: <About />,
-      },
-      {
-        path: "contact",
-        element: <Contact />,
-      },
-      {
-        path: "/restaurants/:resId",
-        element: <RestaurantMenu />,
-      },
+      { path: "/", element: <Body /> },
+      { path: "about", element: <About /> },
+      { path: "contact", element: <Contact /> },
+      { path: "/restaurants/:resId", element: <RestaurantMenu /> },
     ],
-    errorElement: <Error />,
   },
 ]);
 

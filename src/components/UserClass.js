@@ -12,32 +12,43 @@ class UserClass extends React.Component {
         avatar_url: "default",
       },
     };
-
-    // console.log(this.props.name + "Child constructor");
   }
 
   async componentDidMount() {
-    // console.log(this.props.name + "child did mount");
-
     const data = await fetch("https://api.github.com/users/prudhvitadikonda");
     const json = await data.json();
 
     this.setState({
       userInfo: json,
     });
-    console.log(json);
   }
 
   render() {
     const { name, location, login, avatar_url } = this.state.userInfo;
-    // console.log(this.props.name + "child render");
     return (
-      <div className="user-card">
-        <img src={avatar_url} />
-        <h2>Name : {name} </h2>
-        <h3>Location: {location}</h3>
-        <h3>Login: {login}</h3>
-        <h3>Contact: @PrudhviTadikonda</h3>
+      <div className="bg-red-100 p-8 rounded-lg shadow-lg w-80 text-center mx-auto border-2 border-red-600">
+        <img
+          src={avatar_url}
+          alt={`${name}'s Avatar`}
+          className="w-24 h-24 mx-auto rounded-full border-4 border-black shadow-md"
+        />
+        <h2 className="text-2xl font-extrabold text-red-600 mt-4">
+          {name} <span className="text-sm text-black">(Founder & CEO)</span>
+        </h2>
+        <p className="text-black font-semibold mt-1">Username: @{login}</p>
+        <a
+          href={`https://github.com/${login}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-red-600 hover:text-black underline mt-4 inline-block"
+        >
+          Visit GitHub Profile
+        </a>
+        <div className="mt-4">
+          <button className="bg-red-600 text-white px-4 py-2 rounded hover:bg-black">
+            Contact @PrudhviTadikonda
+          </button>
+        </div>
       </div>
     );
   }

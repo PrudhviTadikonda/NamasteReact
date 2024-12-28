@@ -21,8 +21,10 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "parcel": "^2.13.3",
+    "postcss": "^8.4.49",
     "process": "^0.11.10",
-    "react-refresh": "^0.16.0"
+    "react-refresh": "^0.16.0",
+    "tailwindcss": "^3.4.17"
   },
   "dependencies": {
     "@parcel/transformer-react-refresh-wrap": "^2.13.3",
